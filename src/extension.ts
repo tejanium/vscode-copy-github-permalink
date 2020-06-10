@@ -10,14 +10,14 @@ export function activate(context: vscode.ExtensionContext) {
 			const permalink = new Permalink(editor);
 			const branch = getBranch();
 
-			try {
+			// try {
 				const url = await permalink.get(branch);
 
 				clipboardy.writeSync(url);
 				vscode.window.showInformationMessage(`Copied permalink to ${branch}.`);
-			} catch (error) {
-				vscode.window.showWarningMessage(error.message);
-			}
+			// } catch (error) {
+				// vscode.window.showWarningMessage(error.message);
+			// }
 		}
 	});
 
