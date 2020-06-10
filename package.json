@@ -5,14 +5,14 @@
 	"description": "Copy Github Permalink",
 	"icon": "img/ico.png",
 	"version": "1.0.0",
-	"homepage": "https://github.com/tejanium/copy-github-permalink/blob/master/README.md",
+	"homepage": "https://github.com/tejanium/vscode-copy-github-permalink/blob/master/README.md",
 	"bugs": {
-		"url": "https://github.com/tejanium/copy-github-permalink/issues"
+		"url": "https://github.com/tejanium/vscode-copy-github-permalink/issues"
 	},
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/tejanium/copy-github-permalink"
+		"url": "https://github.com/tejanium/vscode-copy-github-permalink"
 	},
 	"engines": {
 		"vscode": "^1.45.0"
