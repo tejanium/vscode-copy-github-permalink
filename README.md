@@ -1,6 +1,6 @@
 # VSCode Copy Github Permalink
 
-[![Build Status](https://dev.azure.com/tejanium/vscode-copy-github-permalink/_apis/build/status/tejanium.copy-github-permalink?branchName=master)](https://dev.azure.com/tejanium/vscode-copy-github-permalink/_build/latest?definitionId=1&branchName=master)
+[![Build Status](https://dev.azure.com/tejanium/vscode-copy-github-permalink/_apis/build/status/tejanium.vscode-copy-github-permalink?branchName=master)](https://dev.azure.com/tejanium/vscode-copy-github-permalink/_build/latest?definitionId=4&branchName=master)
 [![David](https://img.shields.io/david/tejanium/vscode-copy-github-permalink)](https://david-dm.org/tejanium/vscode-copy-github-permalink)
 [![David](https://img.shields.io/david/dev/tejanium/vscode-copy-github-permalink)](https://david-dm.org/tejanium/vscode-copy-github-permalink?type=dev)
 [![GitHub release](https://img.shields.io/github/v/release/tejanium/vscode-copy-github-permalink)](https://github.com/tejanium/vscode-copy-github-permalink/releases)
