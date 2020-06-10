@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 import * as sinon from 'sinon';
 import { before, beforeEach, afterEach } from 'mocha';
 import assert = require('assert');
-import clipboardy = require('clipboardy');
 
 const mockSpawn = require('mock-spawn')();
 require('child_process').spawn = mockSpawn;
@@ -56,7 +55,7 @@ suite('Test commands', () => {
 			await vscode.commands.executeCommand('copy-github-permalink.copy');
 
 			sandbox.assert.calledWith(infoStub, 'Copied permalink to HEAD.');
-			assert.equal(clipboardy.readSync(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L1');
+			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L1');
 		});
 
 		test('Display copied information and put the link of all lines to clipboard', async () => {
@@ -69,7 +68,7 @@ suite('Test commands', () => {
 			await vscode.commands.executeCommand('copy-github-permalink.copy');
 
 			sandbox.assert.calledWith(infoStub, 'Copied permalink to HEAD.');
-			assert.equal(clipboardy.readSync(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L3');
+			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L3');
 		});
 
 		test('Select another branch', async () => {
@@ -81,7 +80,7 @@ suite('Test commands', () => {
 			await vscode.commands.executeCommand('copy-github-permalink.copy');
 
 			sandbox.assert.calledWith(infoStub, 'Copied permalink to origin/master.');
-			assert.equal(clipboardy.readSync(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L3');
+			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L3');
 		});
 
 		test('Cannot get git information', async () => {
