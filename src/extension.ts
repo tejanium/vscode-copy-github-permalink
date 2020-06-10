@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
 import { Permalink } from './model/permalink';
-import clipboardy = require('clipboardy');
 
 export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('copy-github-permalink.copy', async () => {
@@ -10,14 +9,14 @@ export function activate(context: vscode.ExtensionContext) {
 			const permalink = new Permalink(editor);
 			const branch = getBranch();
 
-			// try {
+			try {
 				const url = await permalink.get(branch);
 
-				clipboardy.writeSync(url);
+				vscode.env.clipboard.writeText(url);
 				vscode.window.showInformationMessage(`Copied permalink to ${branch}.`);
-			// } catch (error) {
-				// vscode.window.showWarningMessage(error.message);
-			// }
+			} catch (error) {
+				vscode.window.showWarningMessage(error.message);
+			}
 		}
 	});
 
