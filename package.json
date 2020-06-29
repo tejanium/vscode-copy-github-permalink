@@ -15,7 +15,7 @@
 		"url": "https://github.com/tejanium/vscode-copy-github-permalink"
 	},
 	"engines": {
-		"vscode": "^1.45.0"
+		"vscode": "^1.46.0"
 	},
 	"categories": [
 		"Other"
