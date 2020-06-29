@@ -39,12 +39,12 @@ export class Git {
 	}
 
 	private parseConfig(output: string): { domain: string, owner: string, name: string } {
-		const [repoDomain, repoPath] = output.replace('\n', '').split(':');
+		const normalizedOutput = output.replace(/(\s+|git@|http(s)?:\/\/|\.git)/g, '').replace(':', '/');
+
 		let domain, owner, name;
 
-		if (repoDomain && repoPath) {
-			domain = repoDomain.replace('git@', '');
-			[owner, name] = repoPath.replace('.git', '').split('/');
+		if (normalizedOutput) {
+			[domain, owner, name] = normalizedOutput.split('/');
 		} else {
 			throw Error('Could not get Git info, please try a little later');
 		}

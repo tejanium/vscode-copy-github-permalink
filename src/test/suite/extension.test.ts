@@ -58,6 +58,30 @@ suite('Test commands', () => {
 			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L1');
 		});
 
+		test('Git remote is HTTP', async () => {
+			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as sinon.SinonStub<[string, any?], Thenable<string | undefined>>;
+
+			configureBranch(sandbox, 'HEAD');
+			mockGit('http://github.com/owner/name.git');
+
+			await vscode.commands.executeCommand('copy-github-permalink.copy');
+
+			sandbox.assert.calledWith(infoStub, 'Copied permalink to HEAD.');
+			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L1');
+		});
+
+		test('Git remote is HTTPS', async () => {
+			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as sinon.SinonStub<[string, any?], Thenable<string | undefined>>;
+
+			configureBranch(sandbox, 'HEAD');
+			mockGit('https://github.com/owner/name.git');
+
+			await vscode.commands.executeCommand('copy-github-permalink.copy');
+
+			sandbox.assert.calledWith(infoStub, 'Copied permalink to HEAD.');
+			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L1');
+		});
+
 		test('Display copied information and put the link of all lines to clipboard', async () => {
 			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as sinon.SinonStub<[string, any?], Thenable<string | undefined>>;
 
