@@ -50,7 +50,7 @@
 		"vscode:prepublish": "webpack --mode production",
 		"compile": "webpack --mode development",
 		"test-compile": "tsc -p ./",
-		"lint": "eslint src --ext ts",
+		"lint": "eslint src --ext ts --fix",
 		"watch": "webpack --mode development --watch --info-verbosity verbose",
 		"pretest": "yarn --frozen-lockfile && yarn compile && yarn test-compile && yarn lint",
 		"test": "node ./out/test/runTest.js",
