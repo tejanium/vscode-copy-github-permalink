@@ -491,12 +491,12 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-await-spawn@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/await-spawn/-/await-spawn-3.0.0.tgz#ec8859c493f2d939e015b5507258367894ad2c9a"
-  integrity sha512-/ch6OPnDkfgOJCiMBrsB9LxuxcbXwBr+2hi38jRUMP5L4A7rMNWnBieU1h+wjivDxCCst67WVH7mL2Ysx5kxqQ==
+await-spawn@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/await-spawn/-/await-spawn-4.0.1.tgz#71bb2433bc5be52b9bfd0154435d5e063e0ba4a5"
+  integrity sha512-cQSpdH79ktTdsMjUuUvyhdIYbXArynlV5jvHY8FPWXdwF5UGyrVaHCQxo/Iw5DbSQx2Ha3EOS+cy41sup+AkiQ==
   dependencies:
-    bl "^3.0.0"
+    bl "^4.0.3"
 
 azure-devops-node-api@^7.2.0:
   version "7.2.0"
@@ -553,12 +553,14 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bl@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/bl/-/bl-3.0.1.tgz#1cbb439299609e419b5a74d7fce2f8b37d8e5c6f"
-  integrity sha512-jrCW5ZhfQ/Vt07WX1Ngs+yn9BDqPL/gw28S7s9H6QK/gupnizNzJAss5akW20ISgOrbLTlXOOCTJeNUQqruAWQ==
+bl@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/bl/-/bl-4.0.3.tgz#12d6287adc29080e22a705e5764b2a9522cdc489"
+  integrity sha512-fs4G6/Hu4/EE+F75J8DuN/0IpQqNjAdC7aEQv7Qt8MHGUH7Ckv2MwTEEeN9QehD0pfIDkMI1bkHYkKy7xHyKIg==
   dependencies:
-    readable-stream "^3.0.1"
+    buffer "^5.5.0"
+    inherits "^2.0.4"
+    readable-stream "^3.4.0"
 
 bluebird@^3.5.5:
   version "3.7.2"
@@ -705,6 +707,14 @@ buffer@^4.3.0:
     base64-js "^1.0.2"
     ieee754 "^1.1.4"
     isarray "^1.0.0"
+
+buffer@^5.5.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/buffer/-/buffer-5.6.0.tgz#a31749dc7d81d84db08abf937b6b8c4033f62786"
+  integrity sha512-/gDYp/UtU0eA1ys8bOs9J6a+E/KWIY+DZ+Q2WESNUA0jFRsJOc0SNUO6xJ5SGA1xueg3NL65W6s+NY5l9cunuw==
+  dependencies:
+    base64-js "^1.0.2"
+    ieee754 "^1.1.4"
 
 builtin-status-codes@^3.0.0:
   version "3.0.0"
@@ -3145,7 +3155,7 @@ read@^1.0.7:
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-readable-stream@^3.0.1, readable-stream@^3.1.1, readable-stream@^3.6.0:
+readable-stream@^3.1.1, readable-stream@^3.4.0, readable-stream@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.0.tgz#337bbda3adc0706bd3e024426a286d4b4b2c9198"
   integrity sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA==
