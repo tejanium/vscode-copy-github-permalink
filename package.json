@@ -21,7 +21,8 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:copy-github-permalink.copy"
+		"onCommand:copy-github-permalink.copy",
+		"onCommand:copy-github-permalink.view"
 	],
 	"main": "./dist/extension",
 	"contributes": {
@@ -29,6 +30,9 @@
 			{
 				"command": "copy-github-permalink.copy",
 				"title": "Github Permalink: Copy"
+			}, {
+				"command": "copy-github-permalink.view",
+				"title": "Github Permalink: View"
 			}
 		],
 		"configuration": {
