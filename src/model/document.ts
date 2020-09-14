@@ -1,17 +1,17 @@
 import * as vscode from 'vscode';
 
 export class Document {
-  private blob: string | undefined;
+  private path: string | undefined;
   private position: string | undefined;
 
 	constructor(private permalink: string) {
-    [this.blob, this.position] = this.relativePathWithLines.split('#') || [];
+    [this.path, this.position] = this.relativePathWithLines.split('#') || [];
   }
 
   async document(): Promise<vscode.TextDocument> {
     const root = vscode.workspace.workspaceFolders![0].uri.fsPath;
 
-    return await vscode.workspace.openTextDocument(`${root}/${this.blob}`);
+    return await vscode.workspace.openTextDocument(`${root}/${this.path}`);
   }
 
   get showOptions(): vscode.TextDocumentShowOptions {
