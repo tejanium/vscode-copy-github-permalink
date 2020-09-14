@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { Document } from './model/document';
 import { Permalink } from './model/permalink';
 
 export function activate(context: vscode.ExtensionContext) {
@@ -24,23 +25,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 	let view = vscode.commands.registerCommand('copy-github-permalink.view', async () => {
 		const input = await vscode.window.showInputBox();
-		const [blob, position] = input?.split("blob").pop()?.split("/").slice(2).join("/").split("#") || [];
 
-		if (blob) {
-			const uri = await vscode.workspace.findFiles(`**/${blob}`);
-			const textDocument = await vscode.workspace.openTextDocument(uri[0]);
-			const opts = { preview: false };
+		if (input) {
+			const document = new Document(input);
 
-			if (position) {
-				const [start, end] = position.replace(/L/g, "").split("-");
-				const startPosition = new vscode.Position(parseInt(start) - 1, 0);
-				const endPosition = new vscode.Position(parseInt(end), 0);
-				const range = new vscode.Range(startPosition, endPosition);
-
-				Object.assign(opts, { selection: range });
-			}
-
-			vscode.window.showTextDocument(textDocument, opts);
+			vscode.window.showTextDocument(await document.document(), document.showOptions);
 		}
 	});
 
