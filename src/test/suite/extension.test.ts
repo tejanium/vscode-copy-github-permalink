@@ -47,7 +47,7 @@ suite('Test commands', () => {
 
 	suite('copy-github-permalink.copy', () => {
 		test('Display copied information and put the link to clipboard', async () => {
-			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as sinon.SinonStub<[string, any?], Thenable<string | undefined>>;
+			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as unknown as sinon.SinonStub<[string], Thenable<string | undefined>>;
 
 			configureBranch(sandbox, 'HEAD');
 			mockGit();
@@ -59,7 +59,7 @@ suite('Test commands', () => {
 		});
 
 		test('Git remote is HTTP', async () => {
-			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as sinon.SinonStub<[string, any?], Thenable<string | undefined>>;
+			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as unknown as sinon.SinonStub<[string], Thenable<string | undefined>>;
 
 			configureBranch(sandbox, 'HEAD');
 			mockGit('http://github.com/owner/name.git');
@@ -71,7 +71,7 @@ suite('Test commands', () => {
 		});
 
 		test('Git remote is HTTPS', async () => {
-			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as sinon.SinonStub<[string, any?], Thenable<string | undefined>>;
+			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as unknown as sinon.SinonStub<[string], Thenable<string | undefined>>;
 
 			configureBranch(sandbox, 'HEAD');
 			mockGit('https://github.com/owner/name.git');
@@ -83,7 +83,7 @@ suite('Test commands', () => {
 		});
 
 		test('Display copied information and put the link of all lines to clipboard', async () => {
-			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as sinon.SinonStub<[string, any?], Thenable<string | undefined>>;
+			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as unknown as sinon.SinonStub<[string], Thenable<string | undefined>>;
 
 			configureBranch(sandbox, 'HEAD');
 			mockGit();
@@ -96,7 +96,7 @@ suite('Test commands', () => {
 		});
 
 		test('Select another branch', async () => {
-			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as sinon.SinonStub<[string, any?], Thenable<string | undefined>>;
+			const infoStub = sandbox.stub(vscode.window, 'showInformationMessage') as unknown as sinon.SinonStub<[string], Thenable<string | undefined>>;
 
 			configureBranch(sandbox, 'origin/master');
 			mockGit();
@@ -108,7 +108,7 @@ suite('Test commands', () => {
 		});
 
 		test('Cannot get git information', async () => {
-			const warningStub = sandbox.stub(vscode.window, 'showWarningMessage') as sinon.SinonStub<[string, any?], Thenable<string | undefined>>;
+			const warningStub = sandbox.stub(vscode.window, 'showWarningMessage') as unknown as sinon.SinonStub<[string], Thenable<string | undefined>>;
 
 			configureBranch(sandbox, 'origin/master');
 			mockGit('');
