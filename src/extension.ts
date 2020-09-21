@@ -3,7 +3,7 @@ import { Document } from './model/document';
 import { Permalink } from './model/permalink';
 
 export function activate(context: vscode.ExtensionContext) {
-	let copy = vscode.commands.registerCommand('copy-github-permalink.copy', async () => {
+	const copy = vscode.commands.registerCommand('copy-github-permalink.copy', async () => {
 		const editor = vscode.window.activeTextEditor;
 
 		if (editor && editor.document.uri.scheme === 'file') {
@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(copy);
 
-	let show = vscode.commands.registerCommand('copy-github-permalink.show', async () => {
+	const show = vscode.commands.registerCommand('copy-github-permalink.show', async () => {
 		const input = await vscode.window.showInputBox();
 
 		if (input) {
