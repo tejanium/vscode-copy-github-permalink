@@ -4,7 +4,7 @@
 	"displayName": "Copy Github Permalink",
 	"description": "Copy Github Permalink",
 	"icon": "img/ico.png",
-	"version": "1.0.2",
+	"version": "1.1.0",
 	"homepage": "https://github.com/tejanium/vscode-copy-github-permalink/blob/master/README.md",
 	"bugs": {
 		"url": "https://github.com/tejanium/vscode-copy-github-permalink/issues"
