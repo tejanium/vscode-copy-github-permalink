@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(copy);
 
-	let view = vscode.commands.registerCommand('copy-github-permalink.view', async () => {
+	let show = vscode.commands.registerCommand('copy-github-permalink.show', async () => {
 		const input = await vscode.window.showInputBox();
 
 		if (input) {
@@ -38,7 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	context.subscriptions.push(view);
+	context.subscriptions.push(show);
 }
 
 function getBranch(): string {

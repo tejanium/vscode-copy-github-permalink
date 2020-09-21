@@ -17,7 +17,7 @@ This extension by default will copy permalink to your `origin/master` because it
 To activate, enter these commands in the Command Palette:
 
 - `copy-github-permalink.copy`: Copy permalink of the selected line.
-- `copy-github-permalink.view`: View and open Github's permalink in VS Code.
+- `copy-github-permalink.show`: Show Github's permalink in VS Code.
 
 ## Extension Settings
 

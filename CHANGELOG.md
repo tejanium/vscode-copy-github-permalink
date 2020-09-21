@@ -1,7 +1,7 @@
 ## [v1.1.0]
 
 ### Added
-- `copy-github-permalink.view`: View and open Github's permalink in VS Code.
+- `copy-github-permalink.show`: Show Github's permalink in VS Code.
 
 ## [v1.0.2]
 

@@ -125,47 +125,47 @@ suite('Test commands', () => {
 		});
 	});
 
-	suite('copy-github-permalink.view', () => {
-		test('Open the file', async () => {
+	suite('copy-github-permalink.show', () => {
+		test('Show the file', async () => {
 			const showDocumentStub = sandbox.stub(vscode.window, 'showTextDocument') as unknown as sinon.SinonStub<[vscode.TextDocument, vscode.TextDocumentShowOptions]>;
 
 			sandbox.stub(vscode.window, 'showInputBox').resolves('https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L3');
 
-			await vscode.commands.executeCommand('copy-github-permalink.view');
+			await vscode.commands.executeCommand('copy-github-permalink.show');
 
 			const document = await getFixtureFile('test/fixtures/file.txt');
 			const range = new vscode.Range(new vscode.Position(0, 0), new vscode.Position(3, 0));
 			sandbox.assert.calledWith(showDocumentStub, document, { preview: false, selection: range });
 		});
 
-		test('Open the file even without sha', async () => {
+		test('Show the file even without sha', async () => {
 			const showDocumentStub = sandbox.stub(vscode.window, 'showTextDocument') as unknown as sinon.SinonStub<[vscode.TextDocument, vscode.TextDocumentShowOptions]>;
 
 			sandbox.stub(vscode.window, 'showInputBox').resolves('https://github.com/owner/name/blob/master/test/fixtures/file.txt');
 
-			await vscode.commands.executeCommand('copy-github-permalink.view');
+			await vscode.commands.executeCommand('copy-github-permalink.show');
 
 			const document = await getFixtureFile('test/fixtures/file.txt');
 			sandbox.assert.calledWith(showDocumentStub, document, { preview: false });
 		});
 
-		test('Open the file even without line', async () => {
+		test('Show the file even without line', async () => {
 			const showDocumentStub = sandbox.stub(vscode.window, 'showTextDocument') as unknown as sinon.SinonStub<[vscode.TextDocument, vscode.TextDocumentShowOptions]>;
 
 			sandbox.stub(vscode.window, 'showInputBox').resolves('https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt');
 
-			await vscode.commands.executeCommand('copy-github-permalink.view');
+			await vscode.commands.executeCommand('copy-github-permalink.show');
 
 			const document = await getFixtureFile('test/fixtures/file.txt');
 			sandbox.assert.calledWith(showDocumentStub, document, { preview: false });
 		});
 
-		test('Open the file even with missing line', async () => {
+		test('Show the file even with missing line', async () => {
 			const showDocumentStub = sandbox.stub(vscode.window, 'showTextDocument') as unknown as sinon.SinonStub<[vscode.TextDocument, vscode.TextDocumentShowOptions]>;
 
 			sandbox.stub(vscode.window, 'showInputBox').resolves('https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#');
 
-			await vscode.commands.executeCommand('copy-github-permalink.view');
+			await vscode.commands.executeCommand('copy-github-permalink.show');
 
 			const document = await getFixtureFile('test/fixtures/file.txt');
 			sandbox.assert.calledWith(showDocumentStub, document, { preview: false });
