@@ -159,5 +159,16 @@ suite('Test commands', () => {
 			const document = await getFixtureFile('test/fixtures/file.txt');
 			sandbox.assert.calledWith(showDocumentStub, document, { preview: false });
 		});
+
+		test('Open the file even with missing line', async () => {
+			const showDocumentStub = sandbox.stub(vscode.window, 'showTextDocument') as unknown as sinon.SinonStub<[vscode.TextDocument, vscode.TextDocumentShowOptions]>;
+
+			sandbox.stub(vscode.window, 'showInputBox').resolves('https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#');
+
+			await vscode.commands.executeCommand('copy-github-permalink.view');
+
+			const document = await getFixtureFile('test/fixtures/file.txt');
+			sandbox.assert.calledWith(showDocumentStub, document, { preview: false });
+		});
 	});
 });

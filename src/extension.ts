@@ -27,9 +27,14 @@ export function activate(context: vscode.ExtensionContext) {
 		const input = await vscode.window.showInputBox();
 
 		if (input) {
+			const showOpts = { preview: false };
 			const document = new Document(input);
 
-			vscode.window.showTextDocument(await document.document(), document.showOptions);
+			if (document.range) {
+				Object.assign(showOpts, { selection: document.range });
+			}
+
+			vscode.window.showTextDocument(await document.document(), showOpts);
 		}
 	});
 
