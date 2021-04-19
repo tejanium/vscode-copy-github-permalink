@@ -73,6 +73,6 @@
 		"webpack-cli": "^4.6.0"
 	},
 	"dependencies": {
-		"await-spawn": "^4.0.1"
+		"await-spawn": "^4.0.2"
 	}
 }
