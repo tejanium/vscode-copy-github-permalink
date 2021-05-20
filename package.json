@@ -65,7 +65,7 @@
 		"mocha": "^8.4.0",
 		"mock-spawn": "^0.2.6",
 		"sinon": "^10.0.0",
-		"ts-loader": "^9.2.0",
+		"ts-loader": "^9.2.1",
 		"typescript": "^3.9.7",
 		"vsce": "^1.88.0",
 		"vscode-test": "^1.5.2",
