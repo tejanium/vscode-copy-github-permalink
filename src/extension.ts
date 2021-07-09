@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
+import { Document } from './model/document';
 import { Permalink } from './model/permalink';
 
 export function activate(context: vscode.ExtensionContext) {
-	let disposable = vscode.commands.registerCommand('copy-github-permalink.copy', async () => {
+	const copy = vscode.commands.registerCommand('copy-github-permalink.copy', async () => {
 		const editor = vscode.window.activeTextEditor;
 
 		if (editor && editor.document.uri.scheme === 'file') {
@@ -20,7 +21,24 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(copy);
+
+	const show = vscode.commands.registerCommand('copy-github-permalink.show', async () => {
+		const input = await vscode.window.showInputBox();
+
+		if (input) {
+			const document = new Document(input);
+			const showOpts = { preview: false };
+
+			if (document.range) {
+				Object.assign(showOpts, { selection: document.range });
+			}
+
+			vscode.window.showTextDocument(await document.document(), showOpts);
+		}
+	});
+
+	context.subscriptions.push(show);
 }
 
 function getBranch(): string {
