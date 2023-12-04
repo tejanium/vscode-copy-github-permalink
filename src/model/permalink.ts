@@ -21,6 +21,6 @@ export class Permalink {
 
 		const file = vscode.workspace.asRelativePath(this.editor.document.uri);
 
-		return `https://${domain}/${owner}/${name}/blob/${sha}/${file}#L${start}-L${end}`;
+		return `https://${domain}/${owner}/${name}/blob/${sha}/${file}#L${start}${end}`;
 	}
 }
