@@ -55,7 +55,7 @@ suite('Test commands', () => {
 			await vscode.commands.executeCommand('copy-github-permalink.copy');
 
 			sandbox.assert.calledWith(infoStub, 'Copied permalink to HEAD.');
-			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L1');
+			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1');
 		});
 
 		test('Git remote is HTTP', async () => {
@@ -67,7 +67,7 @@ suite('Test commands', () => {
 			await vscode.commands.executeCommand('copy-github-permalink.copy');
 
 			sandbox.assert.calledWith(infoStub, 'Copied permalink to HEAD.');
-			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L1');
+			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1');
 		});
 
 		test('Git remote is HTTPS', async () => {
@@ -79,7 +79,7 @@ suite('Test commands', () => {
 			await vscode.commands.executeCommand('copy-github-permalink.copy');
 
 			sandbox.assert.calledWith(infoStub, 'Copied permalink to HEAD.');
-			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1-L1');
+			assert.strictEqual(await vscode.env.clipboard.readText(), 'https://github.com/owner/name/blob/sha1234567890/test/fixtures/file.txt#L1');
 		});
 
 		test('Display copied information and put the link of all lines to clipboard', async () => {

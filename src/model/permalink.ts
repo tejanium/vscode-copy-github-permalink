@@ -14,7 +14,10 @@ export class Permalink {
 		const { sha } = await this.git.shaMaster(branch);
 
 		const start = this.editor.selection.start.line + 1;
-		const end = this.editor.selection.end.line + 1;
+		const end =
+			this.editor.selection.end.line > this.editor.selection.start.line
+				? `-L${this.editor.selection.end.line + 1}`
+				: '';
 
 		const file = vscode.workspace.asRelativePath(this.editor.document.uri);
 
