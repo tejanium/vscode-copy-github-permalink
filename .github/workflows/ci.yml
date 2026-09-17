@@ -53,7 +53,7 @@ jobs:
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
       - name: Attach .vsix to the GitHub release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: copy-github-permalink.vsix
           generate_release_notes: true
