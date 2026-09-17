@@ -54,22 +54,27 @@ jobs:
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
           VERSION: ${{ steps.version.outputs.version }}
+        # Both stores reject an existing version; treat that as "already done" so the job can be rerun.
         run: |
-          live=$(npx vsce show tejanium.copy-github-permalink --json | node -p "JSON.parse(require('fs').readFileSync(0,'utf8')).versions.some(v => v.version === process.env.VERSION)")
-          if [ "$live" = "true" ]; then
-            echo "v$VERSION is already on the VS Marketplace, skipping."
-          else
-            npm run deploy:vscode
+          set +e
+          out=$(npm run deploy:vscode 2>&1); code=$?
+          set -e
+          echo "$out"
+          if [ $code -ne 0 ]; then
+            echo "$out" | grep -qiE "already (exists|published)" && echo "v$VERSION is already live, skipping." || exit 1
           fi
       - name: Publish to Open VSX
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
           VERSION: ${{ steps.version.outputs.version }}
+        # Both stores reject an existing version; treat that as "already done" so the job can be rerun.
         run: |
-          if curl -sf -o /dev/null "https://open-vsx.org/api/tejanium/copy-github-permalink/$VERSION"; then
-            echo "v$VERSION is already on Open VSX, skipping."
-          else
-            npm run deploy:openvsx
+          set +e
+          out=$(npm run deploy:openvsx 2>&1); code=$?
+          set -e
+          echo "$out"
+          if [ $code -ne 0 ]; then
+            echo "$out" | grep -qiE "already (exists|published)" && echo "v$VERSION is already live, skipping." || exit 1
           fi
       - name: Attach .vsix to the GitHub release
         uses: softprops/action-gh-release@v3
