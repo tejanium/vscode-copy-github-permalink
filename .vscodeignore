@@ -1,11 +1,14 @@
 .vscode/**
 .vscode-test/**
+.vscode-test.mjs
+.github/**
 out/**
 src/**
 .gitignore
-**/tsconfig.json
-**/webpack.config.js
-**/.eslintrc.json
+.nvmrc
+esbuild.js
+eslint.config.mjs
+tsconfig.json
 **/*.map
 **/*.ts
 **/*.yml
